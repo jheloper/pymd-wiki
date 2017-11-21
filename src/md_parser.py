@@ -1,7 +1,12 @@
 import markdown
 from pathlib import Path
 
-class MarkdownParser():
+
+class MarkdownParser:
+
+    def __init__(self):
+        self.source_path = None
+        self.target_path = None
 
     def set_source_path(self, source_path):
         self.source_path = source_path

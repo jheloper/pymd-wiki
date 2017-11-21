@@ -1,7 +1,7 @@
 import unittest
 import src.const as const
 from src.md_parser import MarkdownParser
-import pathlib
+
 
 class TestMarkdownParser(unittest.TestCase):
 
