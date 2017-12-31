@@ -1,0 +1,12 @@
+version: '3'
+services:
+  pymd-wiki:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9080:80"
+    volumes:
+      - .:/workspace/pymd-wiki
+    stdin_open: true
+    tty: true
