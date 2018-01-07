@@ -28,9 +28,13 @@ class MarkdownParser:
 
     def parse_source_files_to_target_files(self):
         source_file_iterator = self.get_source_files_iterator()
+
         for source_file in source_file_iterator:
             Path(self.get_target_path()).mkdir(exist_ok=True)
-            target_file = self.get_target_path() + '/' + source_file.with_suffix('.html').name
+            target_file_path = self.get_target_path() + '/' + source_file.with_suffix('.html').name
+
             with open(source_file) as f:
-                markdown_content = markdown.markdown(f.read())
-                Path(target_file).open('w').write(markdown_content)
+                markdown_content = markdown.markdown(f.read(), extensions=['markdown.extensions.extra', 'markdown.extensions.nl2br', 'markdown.extensions.sane_lists'])
+                target_file = Path(target_file_path).open('w')
+                target_file.write(markdown_content)
+                target_file.close()
